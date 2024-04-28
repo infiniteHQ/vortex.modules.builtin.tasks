@@ -10,18 +10,21 @@ if(NOT VORTEX_SHARED_LIBRARY)
 endif()
 
 
-# Sources du plugin
-set(SOURCES
-    main.cpp
-    src/module.cpp
-    src/instances/Report/ReportRenderInstance.cpp
-)
-
-# Création de la bibliothèque partagée (.so)
+file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 add_library(module SHARED ${SOURCES})
 
-# Option de compilation
+# Compile & link
 target_compile_options(module PRIVATE -Wall -Wextra)
-
-# Liaison avec la bibliothèque partagée vortex_shared
 target_link_libraries(module PRIVATE ${VORTEX_SHARED_LIBRARY})
+target_include_directories(module PRIVATE /usr/include/Vortex)
+
+set(MODULE_TAG "vortex.modules.builtin.tasks.1.1.0")
+set(INSTALL_INCLUDE_DIR /usr/local/include/Vortex/modules/${MODULE_TAG}/)
+
+# Installation des fichiers d'en-tête de /main/include
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
+        DESTINATION ${INSTALL_INCLUDE_DIR}/
+        PATTERN "*.h"
+        PATTERN "*.hpp"
+        PATTERN "*.inl"
+)

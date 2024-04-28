@@ -1,7 +1,5 @@
-#include "../../../../../../lib/newuikit/uikit.h"
-#include "../../../../../../main/include/vortex.h"
+
 #include "../../../assets/logo.h"
-#include "../../../../../../main/include/vortex_internals.h"
 #include "../../module.h"
 
 // TODO : Creation of projects, toolchain & packages

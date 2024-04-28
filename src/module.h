@@ -1,5 +1,6 @@
-#include "../../../include/vortex.h"
-#include "../../../include/vortex_internals.h"
+#include <Vortex/main/include/vortex.h>
+#include <Vortex/main/include/vortex_internals.h>
+#include <Vortex/tools/editor/app/include/editor.h>
 #include <queue>
 
 
